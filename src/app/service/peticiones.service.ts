@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Http, Response, Headers} from '@angular/http';
-import 'rxjs/add/operator/map';
-// import {Observable} from 'rxjs/add/operator/map';
+import {map} from 'rxjs/operators';
 
 @Injectable()
 export class PeticionesService {
@@ -13,6 +12,6 @@ export class PeticionesService {
         return 'Hola mundo desde el servicio';
     }
     getArticulos() {
-        return  this._http.get(this.url).map(res => res.json());
+        return  this._http.get(this.url).pipe(map(res => res.json()));
     }
 }
